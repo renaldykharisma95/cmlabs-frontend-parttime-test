@@ -15,11 +15,31 @@ npm install
 
 ## Running the Development Server
 
+Before running locally, comment out `basePath` in `next.config.ts`:
+
+```ts
+const nextConfig: NextConfig = {
+  // basePath: "/cmlabs-frontend-parttime-test",
+  trailingSlash: true,
+  output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.themealdb.com",
+      },
+    ],
+  },
+};
+```
+
+Then start the dev server:
+
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000/cmlabs-frontend-parttime-test](http://localhost:3000/cmlabs-frontend-parttime-test) with your browser, or visit the live version at [https://renaldykharisma95.github.io/cmlabs-frontend-parttime-test/](https://renaldykharisma95.github.io/cmlabs-frontend-parttime-test/).
+Open [http://localhost:3000](http://localhost:3000) with your browser, or visit the live version at [https://renaldykharisma95.github.io/cmlabs-frontend-parttime-test/](https://renaldykharisma95.github.io/cmlabs-frontend-parttime-test/).
 
 > **Note:** This project uses `basePath: "/cmlabs-frontend-parttime-test"` in `next.config.ts`, so all routes are served under `/cmlabs-frontend-parttime-test`.
 
