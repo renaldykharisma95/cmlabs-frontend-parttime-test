@@ -5,15 +5,15 @@ import { redirect } from "next/navigation";
 export default async function IngredientsPage(props: {
   params: Promise<{ ingredient: string }>;
 }) {
-  const ingredientName = (await props.params).ingredient;
+  const { ingredient } = await props.params;
 
-  if (!ingredientName) {
+  if (!ingredient) {
     redirect("/");
   }
 
   return (
-    <Content showNavbar>
-      <Ingredients/>
+    <Content>
+      <Ingredients ingredientName={ingredient} />
     </Content>
   );
 }

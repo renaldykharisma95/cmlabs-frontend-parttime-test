@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Content } from "@/components";
 import { TextLink } from "@/components/atoms";
 import { useDetailsAction } from "./Details.action";
-import { H1, H2 } from "@/components/atoms";
+import { H2 } from "@/components/atoms";
 import { Paragraph } from "@/components/atoms/Typography/Paragraph";
 
 function MealDetailSkeleton() {
@@ -35,8 +35,14 @@ function MealDetailError({ message }: { message: string }) {
   );
 }
 
-export default function IngredientsDetails() {
-  const { meal, isLoading, error } = useDetailsAction();
+export default function IngredientsDetails({
+  ingredient,
+  mealId,
+}: {
+  ingredient: string;
+  mealId: string;
+}) {
+  const { meal, isLoading, error } = useDetailsAction({ ingredient, mealId });
 
   if (isLoading) return <MealDetailSkeleton />;
   if (error)
@@ -59,10 +65,10 @@ export default function IngredientsDetails() {
   const youtubeId = meal.strYoutube?.split("v=")[1]?.split("&")[0] || "";
 
   return (
-    <Content showNavbar>
+    <Content>
       <div className="max-w-5xl mx-auto px-6 py-10 space-y-10">
         <div className="space-y-3">
-          <H1 className="text-white">{meal.strMeal}</H1>
+          <h1 className="text-4xl font-extrabold tracking-tight text-white">{meal.strMeal}</h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

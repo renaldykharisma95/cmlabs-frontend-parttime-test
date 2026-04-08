@@ -1,26 +1,15 @@
 "use client";
 
 import { cn } from "@heroui/react";
-import type { ComponentProps } from "@/types";
-import { Navbar, NavbarLogo } from "./Navbar";
 
-type ContentProps = ComponentProps & {
-  showNavbar?: boolean;
-  showFooter?: boolean;
+type ContentProps = {
   children?: React.ReactNode;
+  className?: string;
 };
 
-export function Content({
-  showNavbar,
-  children,
-  className,
-  ...props
-}: ContentProps) {
+export function Content({ children, className }: ContentProps) {
   return (
-    <div className={cn("min-h-screen flex flex-col", className)} {...props}>
-      {showNavbar && (
-        <Navbar logo={<NavbarLogo brandName="Mealapp" />} sticky />
-      )}
+    <div className={cn("min-h-screen flex flex-col", className)}>
       <main className="flex-1 w-full">{children}</main>
     </div>
   );

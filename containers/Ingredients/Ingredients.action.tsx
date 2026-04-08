@@ -2,21 +2,17 @@ import { useState } from "react";
 import { GetDishFiltered } from "@/providers/services";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const ITEMS_PER_PAGE = 10;
 
-const useIngredientsAction = () => {
+const useIngredientsAction = (ingredientName: string) => {
   const routing = useRouter();
-  const params = useParams();
-  const ingredientName = params.ingredient as string;
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const search = useDebounce(searchQuery, 500);
-
-  console.log("ingredientName: ", ingredientName);
 
   const { data: ingredientData } = useQuery({
     queryKey: ["listFilteredIngredients", ingredientName],

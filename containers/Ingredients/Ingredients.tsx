@@ -3,7 +3,7 @@
 import { Autocomplete, CategoryCard, Pagination } from "@/components";
 import useIngredientsAction from "./Ingredients.action";
 
-function IngredientsFilter() {
+function IngredientsFilter({ ingredientName }: { ingredientName: string }) {
   const {
     listIngredients,
     currentPage,
@@ -13,7 +13,7 @@ function IngredientsFilter() {
     setSearchQuery,
     setCurrentPage,
     onIngredientSelect,
-  } = useIngredientsAction();
+  } = useIngredientsAction(ingredientName);
 
   return (
     <div className="min-h-screen bg-[#0F1115] text-white font-sans">
