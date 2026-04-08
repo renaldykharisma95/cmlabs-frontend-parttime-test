@@ -19,7 +19,7 @@ Then start the dev server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser, or visit the live version at [https://cmlabs-frontend-parttime-test-1x17bmpqc.vercel.app/](https://cmlabs-frontend-parttime-test-1x17bmpqc.vercel.app/).
+Open [http://localhost:3000](http://localhost:3000) with your browser, or visit the live version at [https://cmlabs-frontend-parttime-test-xi.vercel.app/](https://cmlabs-frontend-parttime-test-xi.vercel.app/).
 
 > **Note:** This project uses `basePath: "/cmlabs-frontend-parttime-test"` in `next.config.ts`, so all routes are served under `/cmlabs-frontend-parttime-test`.
 
