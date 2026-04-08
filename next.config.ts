@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   basePath:
     process.env.NODE_ENV === "production" ? process.env.NEXT_BASE_PATH : "",
   trailingSlash: true,
-  output: process.env.NEXT_OUTPUT as "standalone" | "export" | undefined,
+  output: "standalone",
   images: {
     unoptimized: true,
     remotePatterns: [
