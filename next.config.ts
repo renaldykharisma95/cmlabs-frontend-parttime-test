@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: String(process.env.NEXT_HOSTNAME),
+        hostname: "www.themealdb.com",
       },
     ],
   },
