@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_API_BASE_URL: ${{ secrets.NEXT_PUBLIC_API_BASE_URL }}
+      NEXT_OUTPUT: ${{ secrets.NEXT_OUTPUT }}
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      NEXT_HOSTNAME: ${{ secrets.NEXT_HOSTNAME }}
+      NEXT_BASE_PATH: ${{ secrets.NEXT_BASE_PATH }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
