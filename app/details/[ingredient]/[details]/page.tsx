@@ -1,11 +1,11 @@
 import IngredientsDetails from "@/containers/Details/Details";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
+const STATIC_API_BASE = "https://www.themealdb.com/api/json/v1/1";
 
 async function fetchAllIngredientMealPairs(): Promise<
   { ingredient: string; details: string }[]
 > {
-  const res = await fetch(`${API_BASE}/list.php?i=list`, {
+  const res = await fetch(`${STATIC_API_BASE}/list.php?i=list`, {
     next: { revalidate: 3600 },
   });
   const data = await res.json();
@@ -19,7 +19,7 @@ async function fetchAllIngredientMealPairs(): Promise<
       .map(async (ing: { idIngredient: string; strIngredient: string }) => {
         try {
           const filterRes = await fetch(
-            `${API_BASE}/filter.php?i=${ing.strIngredient}`,
+            `${STATIC_API_BASE}/filter.php?i=${ing.strIngredient}`,
             { next: { revalidate: 3600 } },
           );
           const filterData = await filterRes.json();
@@ -40,11 +40,7 @@ async function fetchAllIngredientMealPairs(): Promise<
 }
 
 export async function generateStaticParams() {
-  try {
-    return await fetchAllIngredientMealPairs();
-  } catch {
-    return [];
-  }
+  return fetchAllIngredientMealPairs();
 }
 
 export default async function DetailsPage(props: {
