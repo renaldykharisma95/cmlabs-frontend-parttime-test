@@ -13,26 +13,6 @@ A Next.js application that displays meal recipes from [TheMealDB API](https://ww
 npm install
 ```
 
-## Running the Development Server
-
-Before running locally, comment out `basePath` in `next.config.ts`:
-
-```ts
-const nextConfig: NextConfig = {
-  // basePath: "/cmlabs-frontend-parttime-test",
-  trailingSlash: true,
-  output: "standalone",
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.themealdb.com",
-      },
-    ],
-  },
-};
-```
-
 Then start the dev server:
 
 ```bash

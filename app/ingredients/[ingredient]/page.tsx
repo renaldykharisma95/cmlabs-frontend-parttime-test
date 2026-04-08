@@ -2,27 +2,6 @@ import { Content } from "@/components";
 import Ingredients from "@/containers/Ingredients";
 import { redirect } from "next/navigation";
 
-const API_BASE = "https://www.themealdb.com/api/json/v1/1";
-
-async function fetchTopIngredients(): Promise<{ ingredient: string }[]> {
-  const res = await fetch(`${API_BASE}/list.php?i=list`, {
-    next: { revalidate: 3600 },
-  });
-  const data = await res.json();
-  const ingredients = data.meals ?? [];
-  return ingredients.slice(0, 50).map((ing: { strIngredient: string }) => ({
-    ingredient: ing.strIngredient,
-  }));
-}
-
-export async function generateStaticParams() {
-  try {
-    return await fetchTopIngredients();
-  } catch {
-    return [];
-  }
-}
-
 export default async function IngredientsPage(props: {
   params: Promise<{ ingredient: string }>;
 }) {

@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: "/cmlabs-frontend-parttime-test",
+  basePath:
+    process.env.NODE_ENV === "production" ? process.env.NEXT_BASE_PATH : "",
   trailingSlash: true,
-  output: "export",
+  output: "standalone",
   images: {
     unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "www.themealdb.com",
+        hostname: String(process.env.NEXT_HOSTNAME)
       },
     ],
   },
