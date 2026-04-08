@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:productionresultssa18.blob.core.windows.net)",
-      "WebFetch(domain:productionresultssa8.blob.core.windows.net)"
-    ]
-  }
-}
