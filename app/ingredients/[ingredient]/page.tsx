@@ -2,7 +2,7 @@ import { Content } from "@/components";
 import Ingredients from "@/containers/Ingredients";
 import { redirect } from "next/navigation";
 
-const API_BASE = "https://www.themealdb.com/api/json/v1/1";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 async function fetchTopIngredients(): Promise<{ ingredient: string }[]> {
   const res = await fetch(`${API_BASE}/list.php?i=list`, {
